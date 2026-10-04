@@ -159,7 +159,7 @@ export default function Home() {
 
       <section className="menu-section" aria-label="Menu">
         <div className="menu-grid">
-          {items.map((item, index) => <motion.article key={item.id} className="menu-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.04 }}>
+          {items.map((item, index) => <motion.article key={item.id} className={`menu-card ${item.category === "Flavor White" ? "flavor-white-card" : ""}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.04 }}>
             <div className="card-image-wrapper">
               {item.image ? (
                 <Image src={item.image} alt={item.name} className="card-image" fill style={{ objectFit: "cover" }} unoptimized priority={index < 4} />
