@@ -159,9 +159,6 @@ export default function Home() {
       </header>
 
       <section className="menu-section" aria-label="Menu">
-        <div className="tabs" role="tablist" aria-label="Menu categories" style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
-          {categories.map((name) => <button key={name} className={category === name ? "tab active" : "tab"} onClick={() => setCategory(name)} role="tab" aria-selected={category === name} style={{ flexShrink: 0 }}>{name}</button>)}
-        </div>
         <div className="menu-grid">
           {items.map((item, index) => <motion.article key={item.id} className="menu-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.04 }}>
             <div className="card-image-wrapper">
@@ -206,7 +203,16 @@ export default function Home() {
         </div>
       </footer>
 
-      {count > 0 && <button className="cart-bar" onClick={() => setOpen(true)}><span><ShoppingBagIcon width={20} /> {count} item{count > 1 ? "s" : ""}</span><strong>{fullMoney(total)}</strong></button>}
+      <nav className="bottom-nav-tabs" role="tablist" aria-label="Menu categories">
+        {categories.map((name) => (
+          <button key={name} className={category === name ? "tab active" : "tab"} onClick={() => { window.scrollTo({top: 0, behavior: 'smooth'}); setCategory(name); }} role="tab" aria-selected={category === name}>
+            {name}
+          </button>
+        ))}
+      </nav>
+
+      {count > 0 && <button className="cart-bar" onClick={() => setOpen(true)}>
+<span><ShoppingBagIcon width={20} /> {count} item{count > 1 ? "s" : ""}</span><strong>{fullMoney(total)}</strong></button>}
       
       <AnimatePresence>
         {open && (
