@@ -205,7 +205,7 @@ export default function Home() {
 
       <nav className="bottom-nav-tabs" role="tablist" aria-label="Menu categories">
         {categories.map((name) => (
-          <button key={name} className={category === name ? "tab active" : "tab"} onClick={() => { window.scrollTo({top: 0, behavior: 'smooth'}); setCategory(name); }} role="tab" aria-selected={category === name}>
+          <button key={name} className={category === name ? "tab active" : "tab"} onClick={(e) => { e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); window.scrollTo({top: 0, behavior: 'smooth'}); setCategory(name); }} role="tab" aria-selected={category === name}>
             {name}
           </button>
         ))}
