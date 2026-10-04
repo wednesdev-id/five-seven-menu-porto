@@ -22,8 +22,8 @@ const menu = [
   { id: "cafe-latte", name: "Cafe Latte", category: "Classic", price: 25000, note: "Hot / Ice", image: "/classic.jpg" },
 
   // Coffee Filter
-  { id: "regular-beans", name: "Regular Beans", category: "Filter", price: 25000, note: "Filter coffee" },
-  { id: "specialty-beans", name: "Specialty Beans", category: "Filter", price: 30000, note: "Filter coffee" },
+  { id: "regular-beans", name: "Regular Beans", category: "Filter", price: 25000, note: "Filter coffee", image: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&h=480&fit=crop" },
+  { id: "specialty-beans", name: "Specialty Beans", category: "Filter", price: 30000, note: "Filter coffee", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=480&fit=crop" },
 
   // Flavor White
   { id: "sol-de-crema", name: "SOL DE CREMA", category: "Flavor White", price: 30000, description: "Using fine robusta coffee that we mix with vanilla and caramel,the balance is created with the addition of magic milk that we use. This drink is quite sweet with a medium coffee taste", image: "/sol-de-crema.jpg" },
@@ -57,8 +57,8 @@ const menu = [
   { id: "green-flag", name: "GREEN FLAG", category: "Juice", price: 35000, description: "A crisp and refreshing blend that balances of fresh greens with the bright tartness of green apple, finished with a gentle warmth from ginger for a revitalizing", image: "/juices.jpg" },
 
   // Tea
-  { id: "english-breakfast", name: "ENGLISH BREAKFAST", category: "Tea", price: 20000, note: "Hot / Ice. Dilmah base. Ice with sugar, hot no sugar." },
-  { id: "lychee-tea", name: "LYCHEE", category: "Tea", price: 28000, note: "Hot / Ice. Dilmah base. Ice with sugar, hot no sugar." },
+  { id: "english-breakfast", name: "ENGLISH BREAKFAST", category: "Tea", price: 20000, note: "Hot / Ice.", image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&h=480&fit=crop" },
+  { id: "lychee-tea", name: "LYCHEE", category: "Tea", price: 28000, note: "Hot / Ice.", image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=480&fit=crop" },
 
   // Salad
   { id: "japanese-salad", name: "JAPANESE SALAD", category: "Salad", price: 45000, description: "Crunchy greens, fresh vibes, and that nutty sesame zing. It's like a spa day...but for your taste buds", image: "/japanese-salad.jpg" },
