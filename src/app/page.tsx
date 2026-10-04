@@ -6,17 +6,107 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { MinusIcon, PlusIcon, ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const menu = [
-  { id: "espresso", name: "Espresso", category: "Classic", price: 20000, note: "Hot" },
-  { id: "affogato", name: "Affogato", category: "Classic", price: 23000, note: "Ice" },
-  { id: "americano-arabica", name: "Americano", variant: "Arabica", category: "Classic", price: 27000, note: "Hot / Ice" },
-  { id: "americano-robusta", name: "Americano", variant: "Robusta", category: "Classic", price: 23000, note: "Hot / Ice" },
-  { id: "cappucino-arabica", name: "Cappucino", variant: "Arabica", category: "Classic", price: 33000, note: "Hot" },
-  { id: "cappucino-robusta", name: "Cappucino", variant: "Robusta", category: "Classic", price: 30000, note: "Hot" },
-  { id: "cafe-latte", name: "Cafe Latte", category: "Classic", price: 25000, note: "Hot / Ice" },
+  // Signature
+  { id: "cold-nitro", name: "COLD NITRO", category: "Signature", price: 28000, description: "Nitro coffee with a splash of Roun syrup and a squeeze of lemon for that perfect zin", image: "/cold-nitro.jpg" },
+  { id: "mont-blanc", name: "MONT BLANC", category: "Signature", price: 30000, description: "Coffee brew with vanilla flavour- a zesty love story in a glass", image: "/mont-blanc.jpg" },
+  { id: "baileys", name: "BAILEYS", category: "Signature", price: 28000, description: "A creamy blend of coffee milk, and the sweet touch of Roun & Butterscotch syrup. One sip, and you'll fall in love", image: "/baileys.jpg" },
+  { id: "citrus-twist", name: "CITRUS TWIST", category: "Signature", price: 30000, description: "Bright, tangy, and refreshingly fun-like sunshine with a splash of sass", image: "/citrus-twist.jpg" },
+
+  // Classic Coffee
+  { id: "espresso", name: "Espresso", category: "Classic", price: 20000, note: "Hot", image: "/classic.jpg" },
+  { id: "affogato", name: "Affogato", category: "Classic", price: 23000, note: "Ice", image: "/classic.jpg" },
+  { id: "americano-arabica", name: "Americano", variant: "Arabica", category: "Classic", price: 27000, note: "Hot / Ice", image: "/classic.jpg" },
+  { id: "americano-robusta", name: "Americano", variant: "Robusta", category: "Classic", price: 23000, note: "Hot / Ice", image: "/classic.jpg" },
+  { id: "cappucino-arabica", name: "Cappucino", variant: "Arabica", category: "Classic", price: 33000, note: "Hot", image: "/classic.jpg" },
+  { id: "cappucino-robusta", name: "Cappucino", variant: "Robusta", category: "Classic", price: 30000, note: "Hot", image: "/classic.jpg" },
+  { id: "cafe-latte", name: "Cafe Latte", category: "Classic", price: 25000, note: "Hot / Ice", image: "/classic.jpg" },
+
+  // Coffee Filter
   { id: "regular-beans", name: "Regular Beans", category: "Filter", price: 25000, note: "Filter coffee" },
   { id: "specialty-beans", name: "Specialty Beans", category: "Filter", price: 30000, note: "Filter coffee" },
+
+  // Flavor White
+  { id: "sol-de-crema", name: "SOL DE CREMA", category: "Flavor White", price: 30000, description: "Using fine robusta coffee that we mix with vanilla and caramel,the balance is created with the addition of magic milk that we use. This drink is quite sweet with a medium coffee taste", image: "/sol-de-crema.jpg" },
+  { id: "cafe-montana", name: "CAFE MONTANA", category: "Flavor White", price: 30000, description: "Like other traditional milk coffees, we use palm sugar which we infuse with double espresso. The uniqueness is on the top layer, we add soft cream so you can feel the difference in texture when enjoying it", image: "/cafe-montana.jpg" },
+  { id: "ambar-de-cafe", name: "AMBAR DE CAFE", category: "Flavor White", price: 30000, description: "The sweet element of butterscotch that we combine with double espresso fine robusta and a little extr sweet cream makes this drink quite intense and certainly refreshing", image: "/ambar-de-cafe.jpg" },
+  { id: "cold-white", name: "COLD WHITE", category: "Flavor White", price: 28000, description: "The character of this drink is quite light, we use cold brew full arabica and sweet from vanilla with a little addition of sweet cream. This drink is suitable for people who like to drink coffee milk but with coffee that is not too intense", image: "/cold-white.jpg" },
+
+  // Flavor Black
+  { id: "peach-americano", name: "PEACH AMERICANO", category: "Flavor Black", price: 28000, description: "Using double espresso fine robusta with an additional 15% flavor. Intense but refreshing.", image: "/peach-americano.jpg" },
+  { id: "berrys-americano", name: "BERRYS AMERICANO", category: "Flavor Black", price: 28000, description: "Using double espresso fine robusta with an additional 15% flavor. Intense but refreshing.", image: "/berrys-americano.jpg" },
+  { id: "floral-americano", name: "FLORAL AMERICANO", category: "Flavor Black", price: 32000, description: "Using double espresso fine robusta with an additional 15% flavor. Intense but refreshing.", image: "/floral-americano.jpg" },
+
+  // Classic Non-Coffee
+  { id: "chocoa-brust", name: "CHOCOA BRUST", category: "Non-Coffee", price: 28000, note: "Hot / Ice", description: "Milk base made from dark chocolate, and using full cream milk will produce a creamy drink with a low sweet taste.", image: "/non-coffee.jpg" },
+  { id: "matcha", name: "MATCHA", category: "Non-Coffee", price: 28000, note: "Hot / Ice", description: "in this product we use matcha which has a medium sweet taste while maintaining the original matcha sensation. the addition of milk will make the texture creamier and softer", image: "/non-coffee.jpg" },
+
+  // Frappe
+  { id: "frappucino-crunch", name: "FRAPPUCINO CRUNCH", category: "Frappe", price: 35000, description: "Creamy. icy, and packed with a crunchy surprise - the ultimate cool treat!", image: "/frappe.jpg" },
+  { id: "pink-happy", name: "PINK HAPPY", category: "Frappe", price: 35000, description: "Sweet, bubbly, and totality insta-worthy. Ship your way to happiness!", image: "/frappe.jpg" },
+
+  // Matcha Series
+  { id: "nutmelt", name: "NUTMELT", category: "Matcha Series", price: 35000, description: "we call it dirty matcha, using ceremonial matcha, espresso and macadamia syrup. This drink creates a harmony of taste between calmness and energy", image: "/nutmelt.jpg" },
+  { id: "matcha-latte", name: "MATCHA LATTE", category: "Matcha Series", price: 30000, description: "An elegant blend of pure ceremonial-grade matcha and selected fresh milk, resulting in a taste that is smooth yet rich in character.", image: "/matcha-latte.jpg" },
+  { id: "aruna", name: "ARUNA", category: "Matcha Series", price: 35000, description: "This unique blend of sweet matcha, fresh pineapple juice, and a touch of cream, this drink offers a creamy texture and a pleasantly sweet flavor", image: "/aruna.jpg" },
+  { id: "shiocha", name: "SHIOCHA", category: "Matcha Series", price: 35000, description: "The combination of pure ceremonial grade matcha and sea salt cream delivers a balanced umami taste", image: "/shiocha.jpg" },
+  { id: "hana", name: "HANA", category: "Matcha Series", price: 35000, description: "Pure matcha mixed with milk and strawberry cream delivers a layered, balanced flavor. It is creamy, fruity, and distinctly matcha, just like a dessert in a cup.", image: "/hana.jpg" },
+
+  // Freshly Juice
+  { id: "sour-blast", name: "SOUR BLAST", category: "Juice", price: 35000, description: "Fresh apple, pineapple, and dragon fruit juice - a zesty, fruity explosion in every sip!", image: "/juices.jpg" },
+  { id: "tropical-breeze", name: "TROPICAL BREEZE", category: "Juice", price: 35000, description: "A smooth blend of pineapple, and orange juice-your tropical getaway in a glass.", image: "/juices.jpg" },
+  { id: "green-flag", name: "GREEN FLAG", category: "Juice", price: 35000, description: "A crisp and refreshing blend that balances of fresh greens with the bright tartness of green apple, finished with a gentle warmth from ginger for a revitalizing", image: "/juices.jpg" },
+
+  // Tea
+  { id: "english-breakfast", name: "ENGLISH BREAKFAST", category: "Tea", price: 20000, note: "Hot / Ice. Dilmah base. Ice with sugar, hot no sugar." },
+  { id: "lychee-tea", name: "LYCHEE", category: "Tea", price: 28000, note: "Hot / Ice. Dilmah base. Ice with sugar, hot no sugar." },
+
+  // Salad
+  { id: "japanese-salad", name: "JAPANESE SALAD", category: "Salad", price: 45000, description: "Crunchy greens, fresh vibes, and that nutty sesame zing. It's like a spa day...but for your taste buds", image: "/japanese-salad.jpg" },
+  { id: "caesar-salad", name: "CAESAR SALAD", category: "Salad", price: 45000, description: "Crisp romaine, juicy chiken, and a perfectly chill boiled egg-because even salads deserve to feel like royalty", image: "/caesar-salad.jpg" },
+
+  // Steak
+  { id: "tenderloin-wagyu", name: "Tenderloin Wagyu Meltique", category: "Steak", price: 135000, description: "Off-grilled Wagyu steak. Tender, marbled, and juicy. Sauce: Mushroom/Blackpaper. Side: Fries/Wedges/Mashed Potato.", image: "/tenderloin.jpg" },
+  { id: "norwegian-salmon", name: "Norwegian Salmon", category: "Steak", price: 135000, description: "Crispy, juicy, and just a little bit fancy. Sauce: Mushroom/Blackpaper. Side: Fries/Wedges/Mashed Potato.", image: "/salmon.jpg" },
+  { id: "chiken-steak", name: "Chiken Steak", category: "Steak", price: 40000, description: "Marinated, grilled, crispy outside, and juicy inside. Variant: Breast/Thigh. Sauce: Mushroom/Blackpaper. Side: Fries/Wedges/Mashed Potato.", image: "/chicken-steak.jpg" },
+
+  // Soup
   { id: "soup-iga", name: "SOUP IGA", category: "Soup", price: 50000, description: "Beef Rib Soup - A hearty Indonesian-style soup made with tender beef ribs, slow cooked in a savory broth with rich spices, creating a warm and comforting dish.", image: "/soup-iga.jpg" },
+
+  // Main Course
+  { id: "nasi-goreng-57", name: "NASI GORENG 57", category: "Main Course", price: 40000, description: "Fried rice with a kecombrang kick, chicken satay on the side—your taste buds won't know what hit 'em.", image: "/nasi-goreng-57.jpg" },
+  { id: "nasi-goreng-seafood", name: "NASI GORENG SEAFOOD", category: "Main Course", price: 38000, description: "Shrimps, squid, and a whole lotta flavor. It's like the ocean got wok-fried for you.", image: "/nasi-goreng-seafood.jpg" },
+  { id: "nasi-ayam-rempah", name: "NASI AYAM REMPAH", category: "Main Course", price: 35000, description: "Juicy chicken, bold spices, and fluffy rice. Like a warm hug... with a little spicy slap.", image: "/nasi-ayam-rempah.jpg" },
+  { id: "beef-yakiniku", name: "RICEBOWL BEEF YAKINIKU", category: "Main Course", price: 38000, description: "Sweet-savory beef, steamy rice, and a soft egg on top. Comfort food just got a glow-up.", image: "/beef-yakiniku.jpg" },
+  { id: "beef-teriyaki", name: "RICEBOWL BEEF TERIYAKI", category: "Main Course", price: 38000, description: "Sticky, saucy teriyaki beef with rice and egg—simple, sweet, and seriously good.", image: "/beef-teriyaki.jpg" },
+
+  // Pasta
+  { id: "spicy-tuna", name: "SPICY TUNA", category: "Pasta", price: 38000, note: "Level Hot", description: "Tuna with attitude. Spicy, savory, and totally not sorry for the kick!", image: "/spicy-tuna.jpg" },
+  { id: "aglio-o-elio", name: "AGLIO O ELIO", category: "Pasta", price: 38000, description: "Garlic, chili, olive oil—so simple, yet so dramatically delicious. Pasta in its purest form.", image: "/aglio-elio.jpg" },
+  { id: "carbonara", name: "CARBONARA", category: "Pasta", price: 38000, description: "Creamy, cheesy, and full of love (and maybe a little guilt).", image: "/carbonara.jpg" },
+  { id: "mac-n-cheese", name: "MAC N CHEESE", category: "Pasta", price: 38000, description: "Cheesy, gooey, and made to make you smile. Like a warm blanket... but edible.", image: "/mac-n-cheese.jpg" },
+
+  // Light Meals
+  { id: "mix-platter", name: "MIX PLATTER", category: "Light Meals", price: 40000, image: "/light-meals.jpg" },
+  { id: "special-nachos", name: "SPECIAL NACHOS", category: "Light Meals", price: 25000, image: "/light-meals.jpg" },
+  { id: "churos", name: "CHUROS", category: "Light Meals", price: 25000, image: "/light-meals.jpg" },
+  { id: "chiken-wings", name: "CHIKEN WINGS", category: "Light Meals", price: 35000, image: "/light-meals.jpg" },
+  { id: "tahu-cabai-garam", name: "TAHU CABAI GARAM", category: "Light Meals", price: 25000, image: "/light-meals.jpg" },
+  { id: "french-fries", name: "FRENCH FRIES", category: "Light Meals", price: 20000, image: "/light-meals.jpg" },
+  { id: "banana-friters", name: "BANANA FRITERS", category: "Light Meals", price: 25000, image: "/light-meals.jpg" },
+  { id: "cireng", name: "CIRENG", category: "Light Meals", price: 25000, image: "/light-meals.jpg" },
+  { id: "fish-n-chips", name: "FISH N CHIPS", category: "Light Meals", price: 35000, image: "/light-meals.jpg" },
+
+  // Dessert
+  { id: "creme-brullee", name: "CREME BRULLEE", category: "Dessert", price: 30000, image: "/creme-brullee.jpg" },
+  { id: "cheesecuit-strawberry", name: "CHEESECUIT STRAWBERRY", category: "Dessert", price: 35000, image: "/cheesecuit-strawberry.jpg" },
+  { id: "panacota", name: "PANACOTA", category: "Dessert", price: 25000, image: "/panacota.jpg" },
+
+  // Pizza
+  { id: "papperoni-beef-pizza", name: "PAPPERONI BEEF PIZZA", category: "Pizza", price: 60000, image: "/papperoni-beef-pizza.jpg" }
 ];
+
+const categories = Array.from(new Set(menu.map(item => item.category)));
+
 const money = (value: number) => {
   const numStr = (value / 1000).toString();
   return `${numStr}K`;
@@ -26,7 +116,7 @@ const fullMoney = (value: number) => `Rp ${value.toLocaleString("id-ID")}`;
 type Cart = Record<string, number>;
 
 export default function Home() {
-  const [category, setCategory] = useState("Soup");
+  const [category, setCategory] = useState("Signature");
   const [cart, setCart] = useState<Cart>({});
   const [open, setOpen] = useState(false);
   const [done, setDone] = useState(false);
@@ -38,7 +128,6 @@ export default function Home() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const value = params.get("table") || "";
-    // Browser-only state is restored once after static HTML hydration.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setTable(/^\d{1,2}$/.test(value) && Number(value) > 0 ? value : "");
     try {
@@ -70,8 +159,8 @@ export default function Home() {
       </header>
 
       <section className="menu-section" aria-label="Menu">
-        <div className="tabs" role="tablist" aria-label="Menu categories">
-          {["Soup", "Classic", "Filter"].map((name) => <button key={name} className={category === name ? "tab active" : "tab"} onClick={() => setCategory(name)} role="tab" aria-selected={category === name}>{name}</button>)}
+        <div className="tabs" role="tablist" aria-label="Menu categories" style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
+          {categories.map((name) => <button key={name} className={category === name ? "tab active" : "tab"} onClick={() => setCategory(name)} role="tab" aria-selected={category === name} style={{ flexShrink: 0 }}>{name}</button>)}
         </div>
         <div className="menu-grid">
           {items.map((item, index) => <motion.article key={item.id} className="menu-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.04 }}>
