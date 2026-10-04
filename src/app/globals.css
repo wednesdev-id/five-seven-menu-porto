@@ -2,6 +2,8 @@
 @import "tailwindcss";
 
 :root {
+  --color-gold: #cba876;
+  --color-gold-muted: rgba(203, 168, 118, 0.3);
   --color-paper: #0a0a0a;
   --color-ink: #ffffff;
   --color-accent: #ffffff;
@@ -49,11 +51,12 @@ h1, h2, h3, h4, .brand-mark, .table-badge, .eyebrow, strong, .confirm {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(10, 10, 10, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(203, 168, 118, 0.15);
   display: flex;
+  transition: background 0.3s ease;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-xl) var(--space-md) var(--space-md) var(--space-md);
@@ -64,10 +67,11 @@ h1, h2, h3, h4, .brand-mark, .table-badge, .eyebrow, strong, .confirm {
   color: var(--color-ink);
 }
 .brand-mark span { font-weight: 300; }
-.brand-mark strong { font-weight: 800; }
+.brand-mark strong { font-weight: 800; color: var(--color-gold); }
 .table-badge {
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: rgba(203, 168, 118, 0.15);
+  color: var(--color-gold);
+  border: 1px solid rgba(203, 168, 118, 0.3);
   padding: 4px 10px;
   border-radius: 99px;
   font-size: 0.75rem;
@@ -110,13 +114,16 @@ h1, h2, h3, h4, .brand-mark, .table-badge, .eyebrow, strong, .confirm {
   color: var(--color-muted);
   padding: 6px 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tab:active {
+  transform: scale(0.95);
 }
 .tab.active {
-  color: var(--color-ink);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
+  color: var(--color-gold);
+  background: rgba(203, 168, 118, 0.1);
+  border-color: rgba(203, 168, 118, 0.3);
+  box-shadow: 0 0 12px rgba(203, 168, 118, 0.1);
 }
 
 .menu-grid {
@@ -127,14 +134,27 @@ h1, h2, h3, h4, .brand-mark, .table-badge, .eyebrow, strong, .confirm {
 .menu-card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.02);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
   overflow: hidden;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding-bottom: var(--space-md);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menu-card:active {
+  transform: scale(0.98);
+  border-color: rgba(203, 168, 118, 0.4);
+  box-shadow: 0 0 20px rgba(203, 168, 118, 0.15);
+}
+@media (hover: hover) {
+  .menu-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(203, 168, 118, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(203, 168, 118, 0.1);
+  }
 }
 
 .card-image-wrapper {
@@ -211,13 +231,27 @@ h1, h2, h3, h4, .brand-mark, .table-badge, .eyebrow, strong, .confirm {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid var(--color-divider);
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: var(--color-ink);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.add-button:active {
+  transform: scale(0.9);
+  background: var(--color-gold);
+  color: var(--color-paper);
+  border-color: var(--color-gold);
+}
+@media (hover: hover) {
+  .add-button:hover {
+    background: rgba(203, 168, 118, 0.15);
+    color: var(--color-gold);
+    border-color: rgba(203, 168, 118, 0.4);
+  }
 }
 
 footer {
@@ -256,19 +290,23 @@ footer {
   transform: translateX(-50%);
   width: calc(100% - var(--space-md)*2);
   max-width: calc(480px - var(--space-md)*2);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  color: var(--color-ink);
+  background: rgba(203, 168, 118, 0.15);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  color: var(--color-gold);
   padding: 1rem 1.2rem;
   border-radius: 99px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border: 1px solid rgba(203, 168, 118, 0.4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(203, 168, 118, 0.2);
   cursor: pointer;
   z-index: 40;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cart-bar:active {
+  transform: translate(-50%, 2px) scale(0.98);
 }
 .cart-bar span { display: flex; align-items: center; gap: 8px; font-weight: 500; }
 .cart-bar strong { font-size: 1.1rem; }
@@ -391,8 +429,9 @@ footer {
 
 .confirm {
   width: 100%;
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: rgba(203, 168, 118, 0.15);
+  color: var(--color-gold);
+  border: 1px solid rgba(203, 168, 118, 0.3);
   border: none;
   padding: 1.2rem;
   border-radius: var(--radius-sm);
@@ -409,8 +448,9 @@ footer {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: rgba(203, 168, 118, 0.15);
+  color: var(--color-gold);
+  border: 1px solid rgba(203, 168, 118, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
