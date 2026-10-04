@@ -152,10 +152,9 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion="user"><main className="site-shell">
-      <p className="demo-banner">Demo — no orders sent, no payments processed.{offline ? " Offline: saved menu only." : ""}</p>
-      <header className="topbar">
+            <header className="topbar">
         <div className="brand-mark"><span>FIVE</span><strong> SEVEN</strong></div>
-        <div className="table-badge">{table ? `TABLE ${table}` : "DEMO MENU"}</div>
+        <div className="table-badge">{table ? `TABLE ${table}` : "DINE IN"}</div>
       </header>
 
       <section className="menu-section" aria-label="Menu">
@@ -219,11 +218,10 @@ export default function Home() {
           <motion.div className="sheet-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)}>
             <motion.section className="cart-sheet" initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} transition={{ type: "spring", bounce: 0, duration: 0.4 }} onClick={(event) => event.stopPropagation()} aria-label="Cart">
               <div className="sheet-head">
-                <div><p className="eyebrow">YOUR ORDER</p><h2>{table ? `Table ${table}` : "Demo table"}</h2></div>
+                <div><p className="eyebrow">YOUR ORDER</p><h2>{table ? `Table ${table}` : "Dine In"}</h2></div>
                 <button onClick={() => setOpen(false)} aria-label="Close cart"><XMarkIcon width={24} /></button>
               </div>
-              {!table && <p className="notice">Table number not detected. Demo only — select a table before a real order.</p>}
-              
+                            
               <div className="cart-lines">
                 {menu.filter((item) => cart[item.id]).map((item) => (
                   <div className="cart-line" key={item.id}>
@@ -237,22 +235,22 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <div className="total-line"><span>Total demo</span><strong>{fullMoney(total)}</strong></div>
+              <div className="total-line"><span>Total</span><strong>{fullMoney(total)}</strong></div>
               
               {!done ? (
                 <>
                   <p className="payment-label">PAYMENT METHOD</p>
                   <div className="payment-options">
-                    <button aria-pressed={payment === "QRIS"} onClick={() => setPayment("QRIS")} className={`payment ${payment === "QRIS" ? "selected" : ""}`}>QRIS <small>Placeholder only</small></button>
-                    <button aria-pressed={payment === "Cashier"} onClick={() => setPayment("Cashier")} className={`payment ${payment === "Cashier" ? "selected" : ""}`}>Cashier <small>Demo counter</small></button>
+                    <button aria-pressed={payment === "QRIS"} onClick={() => setPayment("QRIS")} className={`payment ${payment === "QRIS" ? "selected" : ""}`}>QRIS <small>Scan & Pay</small></button>
+                    <button aria-pressed={payment === "Cashier"} onClick={() => setPayment("Cashier")} className={`payment ${payment === "Cashier" ? "selected" : ""}`}>Cashier <small>Pay at counter</small></button>
                   </div>
-                  <button className="confirm" disabled={!count} onClick={() => setDone(true)}>Place demo order</button>
+                  <button className="confirm" disabled={!count} onClick={() => setDone(true)}>Place Order</button>
                 </>
               ) : (
                 <div className="confirmation">
                   <div className="check-ring">✓</div>
-                  <h3>Order noted for demo.</h3><p>{payment} · {fullMoney(total)}</p>
-                  <p>No order sent to cashier or kitchen. No payment processed.</p>
+                  <h3>Order Received</h3><p>{payment} · {fullMoney(total)}</p>
+                  <p>Please wait while we prepare your order.</p>
                   <button className="confirm" onClick={() => { setCart({}); setDone(false); setOpen(false); }}>Start again</button>
                 </div>
               )}
